@@ -62,7 +62,7 @@
           message: "",
           agree: true,   
         },
-        catch{
+        catch(error){
           errorName: "",
           errorAge: "",
           errorAddress: "",
@@ -71,7 +71,6 @@
           errorAgree: "",
           success: true
         },
-
       };
     },
     methods: {
@@ -81,6 +80,7 @@
         this.errorAge = "";
         this.errorPhone = "";
         this.errorDob = "";
+        this.errorAddress= "";
         this.errorAgree = "";
 
         // if (!this.name) this.errorName = "Name is required.";
