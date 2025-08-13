@@ -1,10 +1,55 @@
-<template>
+<!-- <template>
   <form @submit.prevent="handleSubmit">
     <button type="submit">Submit</button>
     <p v-if="message">{{ message }}</p>
   </form>
 </template>
+  
+<script>
+import axios from "axios";
 
+export default {
+  name: "SubmitHandler",
+  data() {
+    return {
+      formData: {
+        name: "",
+        age: "",
+        address: "",
+        phone: "",
+        dob: "",
+        agree: false
+      },
+      message: ""
+    };
+  },
+  methods: {
+    async handleSubmit() {
+      try {
+        const res = await axios.post(
+          "http://localhost:5000/api/users",
+          this.formData
+        );
+        this.message = res.data.message || "Data saved successfully!";
+        this.resetForm();
+      } catch (err) {
+        this.message = "Error saving data: " + err.message;
+      }
+    },
+    resetForm() {
+      this.formData = {
+        name: "",
+        age: "",
+        address: "",
+        phone: "",
+        dob: "",
+        agree: false
+      };
+    }
+  }
+};
+</script>
+<!-- 
 <script>
 export default {
     data() {
@@ -35,7 +80,6 @@ export default {
       try {
         const response = await fetch("http://localhost:5000/api/users", {
           method: "POST",
-          console.log(req.body),
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(this.formData)
         });
@@ -49,8 +93,10 @@ export default {
         
       } catch (error) {
         this.message = "Error saving data: " + error.message;
+        console.log('data::: ',this.handleSubmit);
       }
     }
   }
 };
-</script>
+</script> -->
+ -->
