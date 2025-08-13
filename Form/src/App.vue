@@ -35,7 +35,8 @@
         <!-- <button type="submit">Submit</button> -->
         <button type="button" @click="handleSubmit">Submit</button>
         <button type="button" @click="resetForm">Reset</button>
-        <router-link to="/history" class="history-btn">View History</router-link>
+        <!-- <router-link to="/history" class="history-btn">View History</router-link> -->
+        <button type="History" @click="historyButton">View History</button>
       </form>
 
       <!-- <div v-if="success == true" class="success">
@@ -47,13 +48,13 @@
   <script>
   // import submitHandler from "./components/submitHandler.vue";
   import axios from "axios";
+  const { MongoClient } = require('mongodb');
   export default {
     name: "FormPage",
     components: {},
     data() {
       return {
         // form fields
-        try{
           name: "",
           age: "",
           address: "",
@@ -61,8 +62,7 @@
           dob: "",
           message: "",
           agree: true,   
-        },
-        catch(error){
+        
           errorName: "",
           errorAge: "",
           errorAddress: "",
@@ -70,7 +70,6 @@
           errorDob: "",
           errorAgree: "",
           success: true
-        },
       };
     },
     methods: {
@@ -83,11 +82,11 @@
         this.errorAddress= "";
         this.errorAgree = "";
 
-        // if (!this.name) this.errorName = "Name is required.";
-        // if (!this.age) this.errorAge = "Age is required.";
-        // if (!this.phone) this.errorPhone = "Phone is required.";
-        // if (!this.dob) this.errorDob = "Date of birth is required.";
-        // if (!this.agree) this.errorAgree = "Please agree before submitting.";
+        if (!this.name) this.errorName = "Name is required.";
+        if (!this.age) this.errorAge = "Age is required.";
+        if (!this.phone) this.errorPhone = "Phone is required.";
+        if (!this.dob) this.errorDob = "Date of birth is required.";
+        if (!this.agree) this.errorAgree = "Please agree before submitting.";
         let register 
         if(!(!this.name && !this.age && !this.phone && !this.dob && !this.agree)){
           register = await axios.post("http://localhost:5000/api/newusers",{
@@ -127,9 +126,14 @@
         this.errorPhone = "";
         this.errorDob = ""; 
         this.errorAgree = "";
+      },
+      historyButton() {
+        app.get("mongodb://localhost:27017/api/newusers", async (req, res)=>{
+          const newusers=await db.collection.findall();
+          res.json(newusers);
+        })
       }
     },
-      
 
       // async handleSubmit() {
       //   try {

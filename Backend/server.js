@@ -17,7 +17,7 @@ async function startServer() {
     await client.connect();
     console.log("✅ MongoDB Connected");
 
-    const db = client.db(dbName);
+    const db = client.db(Form_Data);
     newusers = db.collection("newusers");
 
     // Start server only after DB connection
@@ -35,6 +35,10 @@ app.post("/api/newusers", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+app.get("api/newusers", async (req, res)=>{
+  const newusers=await newusers.findall();
+  res.json(newusers)
+})
 
 startServer();
 
