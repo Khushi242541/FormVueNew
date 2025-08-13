@@ -48,7 +48,7 @@
   <script>
   // import submitHandler from "./components/submitHandler.vue";
   import axios from "axios";
-  const { MongoClient } = require('mongodb');
+  // const { MongoClient } = require('mongodb');
   export default {
     name: "FormPage",
     components: {},
@@ -127,11 +127,14 @@
         this.errorDob = ""; 
         this.errorAgree = "";
       },
-      historyButton() {
-        app.get("mongodb://localhost:27017/api/newusers", async (req, res)=>{
-          const newusers=await db.collection.findall();
-          res.json(newusers);
-        })
+      async historyButton() {
+        // app.get("://localhost:27017/api/newusers", async (req, res)=>{
+        //   const newusers=await db.collection.findall();
+        //   res.json(newusers);
+        // })
+        console.log('1::: ', 1);
+        let register = await axios.get("http://localhost:5000/api/getusers")
+        console.log('register::: ', register);
       }
     },
 
