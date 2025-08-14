@@ -2,6 +2,7 @@
       <div>
         <h1>History screen!</h1>
         <p>The Form_Data appears here</p>
+        <p>THE MONGO DB data here</p>
       </div>
     </template>
 
