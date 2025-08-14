@@ -1,7 +1,7 @@
     <template>
       <div>
-        <h1>Welcome to My New Screen!</h1>
-        <p>This is the content for the new screen.</p>
+        <h1>History screen!</h1>
+        <p>The Form_Data appears here</p>
       </div>
     </template>
 
@@ -15,6 +15,6 @@
     <style scoped>
     /* Add screen-specific styles here */
     h1 {
-      color: #333;
+      color: #eeb3b3;
     }
     </style>

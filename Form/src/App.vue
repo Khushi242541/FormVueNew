@@ -48,6 +48,8 @@
   <script>
   // import submitHandler from "./components/submitHandler.vue";
   import axios from "axios";
+  // import new_screen from "./components/New screen2"
+  
   // const { MongoClient } = require('mongodb');
   export default {
     name: "FormPage",
