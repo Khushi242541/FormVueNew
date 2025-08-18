@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ul>
-      <h1>History Created by Hemant Jha</h1>
+      <h1>History Created</h1>
       <li><router-link to="/">View History</router-link></li>
 
     </ul>
