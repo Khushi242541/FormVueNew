@@ -38,8 +38,10 @@
         <!-- <router-link to="/history" class="history-btn">View History</router-link> -->
         <!-- <button type="History" @click="historyButton">View History</button> -->
        <button type="History" @click="historyButton"><router-link to="new_Screen">View History</router-link></button>
+        <textarea v-model="historydata"></textarea>
+        <router-view>
 
-        <router-view></router-view>
+        </router-view>
       </form>
 
       <!-- <div v-if="success == true" class="success">
@@ -76,7 +78,8 @@
           errorPhone: "",
           errorDob: "",
           errorAgree: "",
-          success: true
+          success: true,
+          historydata:"",
       };
     },
     methods: {
@@ -141,6 +144,7 @@
         // })
         console.log('1::: ', 1);
         let register = await axios.get("http://localhost:5000/api/getusers")
+        this.historydata = JSON.stringify(register.data)
         console.log('register::: ', register);
       }
     },
@@ -236,7 +240,7 @@
     margin-top: 15px;
     padding: 10px;
     background: #d4edda;
-    color: #155724;
+    color: #041a09;
     border-radius: 4px;
     text-align: center;
   }
