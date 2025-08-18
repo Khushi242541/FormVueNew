@@ -36,7 +36,10 @@
         <button type="button" @click="handleSubmit">Submit</button>
         <button type="button" @click="resetForm">Reset</button>
         <!-- <router-link to="/history" class="history-btn">View History</router-link> -->
-        <button type="History" @click="historyButton">View History</button>
+        <!-- <button type="History" @click="historyButton">View History</button> -->
+       <button type="History" @click="historyButton"><router-link to="new_Screen">View History</router-link></button>
+
+        <router-view></router-view>
       </form>
 
       <!-- <div v-if="success == true" class="success">
@@ -48,13 +51,15 @@
   <script>
   // import submitHandler from "./components/submitHandler.vue";
   import axios from "axios";
-  // import new_screen from "./components/New screen2"
+  import new_Screen from "./components/new_Screen.vue"
   
   // const { MongoClient } = require('mongodb');
   export default {
     name: "FormPage",
-    components: {},
-    data() {
+    components: {
+      new_Screen,  
+      },
+    data() { 
       return {
         // form fields
           name: "",
@@ -218,7 +223,7 @@
     display: inline-block;
     margin-top: 10px;
     padding: 8px;
-    background: #3498db;
+    background: #010b13;
     color: white;
     text-decoration: none;
     border-radius: 4px;
